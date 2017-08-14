@@ -11,27 +11,39 @@ import {
   View
 } from 'react-native';
 
-class Greeting extends Component {
-  render() {
-    return ( <Text>Hello {this.props.name}! </Text> );
-  }//end render()
-}//end class Greeting extends Component
+class Blink extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {showText: true};
 
-export default class AwesomeProject extends Component {
-//export default class LotsOfGreetings extends Component {
+    // Toggle the state every second
+    setInterval(() => {
+      this.setState(previousState => {
+        return { showText: !previousState.showText };
+      });
+    }, 2000);
+  }
+  render() {
+    let display = this.state.showText ? this.props.text : ' ';
+    return (
+      <Text>{display}</Text>
+    );
+  }
+}//end class Blink extends Component
+
+
+export default class BlinkApp extends Component {
   render() {
     return (
-      <View style={{alignItems: 'center'}}>
-        <Greeting name='Rexxar' />
-        <Greeting name='Jaina' />
-        <Greeting name='Valeera' />
-        <Greeting name='Matthew' />
-        <Greeting name='Mark' />
-        <Greeting name='Luke' />
+      <View>
+        <Blink text='I love to blink' />
+        <Blink text='Yes blinking is so great' />
+        <Blink text='Why did they ever take this out of HTML' />
+        <Blink text='Look at me look at me look at meyyyy' />
       </View>
     );
   }
 }
 
 
-AppRegistry.registerComponent('AwesomeProject', () => AwesomeProject);
+AppRegistry.registerComponent('AwesomeProject', () => BlinkApp);
