@@ -24,6 +24,14 @@
          <View style={styles.buttonContainer}>
            <Button
              onPress={this._onPressButton}
+             title="Learn More"
+             color="#841584"
+             accessibilityLabel="Learn more about this purple button"
+           />
+         </View>
+         <View style={styles.buttonContainer}>
+           <Button
+             onPress={this._onPressButton}
              title="Press Me"
            />
          </View>
